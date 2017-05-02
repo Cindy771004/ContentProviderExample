@@ -48,7 +48,8 @@ public class UserInfoProvider extends ContentProvider {
     public boolean onCreate() {
         Log.d(TAG, "onCreate");
 
-        mHelper = new DatabaseHelper(getContext());
+        mHelper= DatabaseHelper.getInstance(getContext());
+//        mHelper = new DatabaseHelper(getContext());
         /**
          * Create a write able database which will trigger its
          * creation if it doesn't already exist.
