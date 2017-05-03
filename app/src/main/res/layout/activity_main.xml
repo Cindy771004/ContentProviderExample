@@ -10,8 +10,55 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cindy.contentprovider.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="24sp"
+            android:text="Add"/>
+
+        <Button
+            android:id="@+id/queryBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="24sp"
+            android:text="Query"/>
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="24sp"
+            android:text="Update"/>
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="24sp"
+            android:text="Delete"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollLogs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp">
+        <TextView
+            android:id="@+id/logInfoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp" />
+    </ScrollView>
+
+
 </RelativeLayout>
