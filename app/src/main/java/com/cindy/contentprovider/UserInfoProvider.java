@@ -19,10 +19,10 @@ import android.util.Log;
 public class UserInfoProvider extends ContentProvider {
 
     //android可透過ContentProvider共享與其他app資料，
-    //其他app可通過ContentProvider對本app的資料進行新增、刪除、修改、查詢。
+    //透過ContentResolver取得ContentProvider提供的資料、對app的資料進行新增、刪除、修改、查詢
 
     private static final String TAG = "UserInfoProvider";
-
+    //AUTHORITY:用於識別app的符號名稱一般为了唯一性，通常是app的package名稱
     public static final String AUTHORITY = "com.cindy.contentprovider.provider";
 
     //我們透過 UserInfoProvider 來調用 DatabaseHelper,

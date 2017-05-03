@@ -21,19 +21,32 @@ public class MainActivity extends AppCompatActivity {
 
         mContentResolver=getContentResolver();
 
+        query();
+        delete();
+        query();
+        add();
+        query();
+        update();
+        query();
+
+    }
+    private void add(){
         //add to DB
         Uri uri = UserInfoTable.CONTENT_URI;
         ContentValues values = new ContentValues();
         values.put(UserInfoTable.COLUMN_NAME, "Cindy");
         values.put(UserInfoTable.COLUMN_AGE, "7");
         mContentResolver.insert(uri, values);
+    }
 
+    private void query(){
         //query personName from DB
+        Uri uri = UserInfoTable.CONTENT_URI;
         String personName = "";
         int personAge=-1;
         Cursor cursor = null;
         try {
-//            Uri uri = UserInfoTable.CONTENT_URI;
+            //Uri uri = UserInfoTable.CONTENT_URI;
             String[] projection = UserInfoTable.PROJECTION;
             String selection = UserInfoTable.COLUMN_NAME + "=?";
             String[] selectionArgs = {"Cindy"};
@@ -42,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
             if (cursor.moveToFirst()) {
                 for (int i = 0; i < cursor.getCount(); i++) {
                     cursor.moveToPosition(i);
-                    Log.d(TAG, "cursor: "+cursor);
                     int indexName = cursor.getColumnIndexOrThrow(UserInfoTable.COLUMN_NAME);
                     personName = cursor.getString(indexName);
                     Log.d(TAG, "personName: "+personName);
@@ -58,5 +70,24 @@ public class MainActivity extends AppCompatActivity {
         } finally {
             cursor.close();
         }
+    }
+
+    private void delete(){
+        //delete from DB where username is Cindy
+        Uri uri = UserInfoTable.CONTENT_URI;
+        String selection =  UserInfoTable.COLUMN_NAME + "=?";
+        String[] selectionArgs = {"Cindy"};
+        mContentResolver.delete(uri, selection, selectionArgs);
+    }
+
+    private void update(){
+        //update to DB where username is Cindy
+        Uri uri = UserInfoTable.CONTENT_URI;
+        ContentValues values = new ContentValues();
+        values.put(UserInfoTable.COLUMN_NAME, "Cindy");
+        values.put(UserInfoTable.COLUMN_AGE, "18");
+        String selection =  UserInfoTable.COLUMN_NAME + "=?";
+        String[] selectionArgs = {"Cindy"};
+        mContentResolver.update(uri,values,selection,selectionArgs);
     }
 }
